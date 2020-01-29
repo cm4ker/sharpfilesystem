@@ -79,19 +79,19 @@ namespace SharpFileSystem.Database
 
         public Stream CreateFile(FileSystemPath path)
         {
-            var result = new DBFileStream(path, _conn.CreateCommand(), false);
+            var result = new DBFileStream(path, _conn.CreateCommand(),_tableName, false);
             result.Flush();
             return result;
         }
 
         public Stream OpenFile(FileSystemPath path, FileAccess access)
         {
-            return new DBFileStream(path, _conn.CreateCommand(), true);
+            return new DBFileStream(path, _conn.CreateCommand(), _tableName,true);
         }
 
         public void CreateDirectory(FileSystemPath path)
         {
-            new DBFileStream(path, _conn.CreateCommand(), false).Flush();
+            new DBFileStream(path, _conn.CreateCommand(), _tableName, false).Flush();
         }
 
         public void Delete(FileSystemPath path)

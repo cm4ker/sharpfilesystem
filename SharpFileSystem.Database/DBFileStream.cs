@@ -10,18 +10,19 @@ namespace SharpFileSystem.Database
     {
         private readonly FileSystemPath _path;
         private readonly DbCommand _cmd;
+        private readonly string _tableName;
         private MemoryStream _ms;
         private bool isExists;
 
-
-        public DBFileStream(FileSystemPath path, DbCommand cmd, bool load)
+        public DBFileStream(FileSystemPath path, DbCommand cmd, string tableName, bool load)
         {
             _path = path;
             _ms = new MemoryStream();
 
             _cmd = cmd;
+            _tableName = tableName;
 
-            _cmd.CommandText = "SELECT 1 FROM vTable WHERE path = @path AND name = @name";
+            _cmd.CommandText = $"SELECT 1 FROM {_tableName} WHERE path = @path AND name = @name";
             var param = _cmd.CreateParameter();
             param.Value = _path.ParentPath.ToString();
             param.ParameterName = "path";
@@ -36,7 +37,7 @@ namespace SharpFileSystem.Database
 
             if (load && isExists)
             {
-                _cmd.CommandText = "SELECT Data FROM vTable WHERE path = @path AND name = @name";
+                _cmd.CommandText = $"SELECT Data FROM {_tableName} WHERE path = @path AND name = @name";
                 _ms = new MemoryStream((byte[]) _cmd.ExecuteScalar());
             }
         }
@@ -52,7 +53,7 @@ namespace SharpFileSystem.Database
             if (!isExists)
             {
                 _cmd.CommandText =
-                    "INSERT INTO vTable(Path, Name, IsDirectory, Data) VALUES( @Path, @Name, @IsDirectory, @Data)";
+                    $"INSERT INTO {_tableName}(Path, Name, IsDirectory, Data) VALUES( @Path, @Name, @IsDirectory, @Data)";
 
                 param = _cmd.CreateParameter();
                 param.Value = _path.IsDirectory;
@@ -61,7 +62,7 @@ namespace SharpFileSystem.Database
             }
             else
             {
-                _cmd.CommandText = "UPDATE vTable SET Data = @Data WHERE Path = @Path AND Name = @Name";
+                _cmd.CommandText = $"UPDATE {_tableName} SET Data = @Data WHERE Path = @Path AND Name = @Name";
             }
 
             param = _cmd.CreateParameter();
