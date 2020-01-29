@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 14.0.23107.0
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFileSystem.SharpZipLib", "SharpFileSystem.SharpZipLib\SharpFileSystem.SharpZipLib.csproj", "{E0BAC37A-07E5-4192-8BD9-51C7CA66C165}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFileSystem.Tests", "SharpFileSystem.Tests\SharpFileSystem.Tests.csproj", "{5B828500-C591-4B35-AFB2-D38026A7ECBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFileSystem.Database", "SharpFileSystem.Database\SharpFileSystem.Database.csproj", "{7BB23382-33AD-4A08-BDD0-74F794F78B68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{EA7CBA29-CFA8-4945-BB64-CCF25078190E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7CBA29-CFA8-4945-BB64-CCF25078190E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7CBA29-CFA8-4945-BB64-CCF25078190E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB23382-33AD-4A08-BDD0-74F794F78B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB23382-33AD-4A08-BDD0-74F794F78B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB23382-33AD-4A08-BDD0-74F794F78B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB23382-33AD-4A08-BDD0-74F794F78B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
